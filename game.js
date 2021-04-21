@@ -1,7 +1,29 @@
 const textElement = document.getElementById('text')
 const optionButtonsElement = document.getElementById('button-option')
 
-let state = {}
+const welcomeSection = document.getElementById('welcome')
+const enterButton = document.getElementById('enter')
+
+const audio = document.getElementById('bgAudio')
+
+function fadeOut(el) {
+            el.style.opacity = 1;
+            (function fade() {
+                if ((el.style.opacity -= .075) < 0) {
+                    el.style.display = "none";
+                } else {
+                    requestAnimationFrame(fade);
+                }
+            })();
+        };
+
+
+enterButton.addEventListener('click', ()=> {
+  audio.play();
+  fadeOut(welcomeSection);
+  document.getElementById('accLogo').style.zIndex = "-1";
+  document.getElementById('nitwLogo').style.zIndex = "-1";
+})
 
 function startGame() {
   showTextNode('0')
@@ -31,7 +53,7 @@ function selectOption(option) {
 const textNodes = [
   {
     id: '0',
-    text: 'The sunlight slips in through the slight crack in curtains, climbs up your bed and lands on your face. The tender warmth makes you smile and you open your eyes, you are puzzled as to why your head hurts regardless, you make your way to the washroom. It’s awfully quiet, you try to remember what happened last night. *thud* You fall in agony, screaming - your head feels like it’s being taken apart, split in two *silence* It’s gone, your head feels light, you collect yourself and get up, raising your head, you catch a glimpse of the mirror. You are …',
+    text: 'Sunlight slips in through a slight crack in curtains, climbs up your bed and lands on your face, the tender warmth makes you smile and you open your eyes. You feel a slight zinging on the back of your head, regardless you make your way to the washroom. It’s awfully quiet, you try to remember what happened last night. *thud* You fall in agony, screaming - your head feels like it’s being taken apart, split in two *silence* The ringing, the pain, it’s gone. You somehow feel lighter. You collect yourself and get up, raising your head, you catch a glimpse of the mirror. You are …',
     options: [
       {
         text: 'Wolfram Thomas, 17M, angsty teen(High School - Senior Year), doesn’t have many friends, schizophrenic',
