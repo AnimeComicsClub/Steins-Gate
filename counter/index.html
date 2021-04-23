@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="accLogo.png" type="image" sizes="16x16">
+    <title>Visitor Counter for Steins;Gate: Through Time and Space</title>
+    <style type="text/css">
+    	@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: #192a56;
+			color: #fff;
+			font-family: 'Muli', sans-serif;
+			flex-direction: column;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		h1 {
+			font-size: 50px;
+			margin: 0;
+		}
+
+		p {
+			color: rgba(255, 255, 255, 0.8);
+			letter-spacing: 2px;
+			margin: 0;
+		}
+    </style>
+</head>
+	<body>
+		<p>The page was viewed</p>
+		<h1 id="count">0</h1>
+		<p>times</p>
+		<p>since 23-04-2021, 6:40 AM</p>
+	</body>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		const countEl = document.getElementById('count');
+
+		updateVisitCount();
+
+		function updateVisitCount() {
+			axios.get('https://api.countapi.xyz/get/Steins-Gate/counter')
+		  	.then(response => {
+		  		console.log(response.data.value);
+		    	countEl.innerHTML = response.data.value;
+		  	})
+		}
+	</script>
+</html>
