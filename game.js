@@ -5,6 +5,7 @@ const welcomeSection = document.getElementById('welcome')
 const enterButton = document.getElementById('enter')
 
 const audio = document.getElementById('bgAudio')
+audio.volume = 0.05;
 
 function fadeOut(el) {
             el.style.opacity = 1;
@@ -17,6 +18,14 @@ function fadeOut(el) {
             })();
         };
 
+updateVisitorCount();
+
+function updateVisitorCount() {
+  axios.get('https://api.countapi.xyz/update/Steins-Gate/counter/?amount=1')
+  .then(response => {
+    console.log(response);
+  });
+}
 
 enterButton.addEventListener('click', ()=> {
   audio.play();
